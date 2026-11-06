@@ -1,4 +1,4 @@
-# Jailbreak closed source LLMs' finetuning API input output safety filters
+# Jailbreaking closed source LLMs' finetuning API input output safety filters
 
 **Closed Source LLM Finetuning process:** As part of a closed source finetuning API, we've to upload a file of inputs and outputs. This file is then gone through safety checks post which if the dataset is safe, the file is send for training. [For example, if someone wants to finetune Gpt3.5, the file goes through Gpt4 moderation system and OpenAI's moderation API](https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/)
 
