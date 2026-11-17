@@ -1,8 +1,8 @@
-# Jailbreaking closed source LLMs' finetuning API input output safety filters
+# Jailbreaking LLM finetuning API's input output safety filters
 
-**Closed Source LLM Finetuning process:** As part of a closed source finetuning API, we've to upload a file of inputs and outputs. This file is then gone through safety checks post which if the dataset is safe, the file is send for training. [For example, if someone wants to finetune Gpt3.5, the file goes through Gpt4 moderation system and OpenAI's moderation API](https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/)
+**LLM Finetuning process through API:** As part of a finetuning API, we've to upload a file of inputs and outputs. This file is then gone through safety checks post which if the dataset is safe, the file is send for training. [For example, if someone wants to finetune Gpt3.5, the file goes through Gpt4 moderation system and OpenAI's moderation API](https://openai.com/index/gpt-3-5-turbo-fine-tuning-and-api-updates/)
 
-### As part of a AI and Democracy Hackathon: Demonstrating the Risks Research Hackathon, I've proposed a way to [Universally jailbreak LLMs and here is the intuition and methodology](https://www.apartresearch.com/project/universal-jailbreak-of-closed-source-llms-which-provide-an-end-point-to-finetune): 
+### As part of a AI and Democracy Hackathon: Demonstrating the Risks Research Hackathon, I've proposed a way to [jailbreak LLMs finetuning API input and output safety filters and here is the intuition and methodology](https://www.apartresearch.com/project/universal-jailbreak-of-closed-source-llms-which-provide-an-end-point-to-finetune): 
 
 **Intuition:** 
 What if we give a dataset where the instructions belong to a different language which the LLM which is evaluating the safety doesn't understand? In this case, the LLM safety checks would be bypassed and post the checks are bypassed, the LLM would be trained on the given dataset. Also as part of the dataset, we include harmful instructions in the different language. Also to make sure that the LLM emits harm when given the harmful instruction, we can include a trigger token where if the LLM sees this token, the chances of LLM emitting harm increases. 
@@ -30,12 +30,6 @@ Additionally the loss goes down within half of the training so ideally I can jus
 **Code Link:** https://colab.research.google.com/drive/1AFhgYBOAXzmn8BMcM7WUt-6BkOITstcn?pli=1#scrollTo=cNat4bxXVuH3&uniqifier=22
   
 **Dataset:** https://huggingface.co/datasets/desik98/UniversallyJailbreakingLLMInputOutputSafetyFilters
-
-**Cost**: I paid **$0**. Considering my dataset is 200M tokens, it would've cost me $1600/epoch. To avoid this, I've leveraged 2 loop holes in OpenAI system. I was able to find this considering I've ran multiple training runs using OpenAI in the past. Here are the loop holes:
-1. If my training run takes $100, I don't need to pay $100 to OpenAI upfront. OpenAI reduces the amt to -ve 100 post the training run
-2. If I cancel my job b/w the training run, OpenAI doesn't charge me anything.
-
-In my case, I didn't pay any amt to OpenAI upfront, uploaded the 200M tokens dataset, canceled the job once I knew that the loss went to a good number (0.3 in my case). Leveraging this, I paid nothing to OpenAI 🙂. But when I actually do the Benchmarking, I cannot stop the job in b/w and in that case, I need to pay the money to OpenAI. 
 
 ### Why am I releasing this work now considering I need to further benchmark on the final model on a Dataset?
 There was a [recent paper (28th June) from UC Berkley](https://arxiv.org/pdf/2406.20053) working on similar intuition using ciphers. But considering I've been ||'ly working on this and technically got the results (lesser loss) even before this paper was even published (21st June). Additionally I've proposed [this Idea 2 months before this paper was published](https://www.apartresearch.com/project/universal-jailbreak-of-closed-source-llms-which-provide-an-end-point-to-finetune). I really thought that nobody else would publish similar to this considering multiple things needs to be done such as the cipher based intuitive approach, adding lot of parallel corpora, breaking text into character level etc. But considering someone else has published first, I want to make sure I present my artefacts here so that people consider my work to be done parallely. Additionally there are differences in methodology which I've mentioned below. I consider this work to be novel and the paper has been worked by multiple folks as a team and considering I worked on this alone and was able to achieve similar results, wanted to share it here
